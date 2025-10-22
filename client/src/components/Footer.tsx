@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2">
               <img 
@@ -17,32 +17,6 @@ export default function Footer() {
                 data-testid="logo-footer" 
               />
             </div>
-          <div>
-            <h3 className="mb-4 font-semibold text-sm">Company</h3>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="mailto:boundierofficial@gmail.com" className="text-foreground hover-elevate transition-colors" data-testid="link-contact">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="mailto:boundierofficial@gmail.com" className="text-foreground hover-elevate transition-colors" data-testid="link-contact">
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="mailto:boundierofficial@gmail.com" className="text-foreground hover-elevate transition-colors" data-testid="link-contact">
-                </a>
-              </li>
-            </ul>
-          </div>
             <p className="mt-4 text-sm text-foreground">
               You see it. We read it.
             </p>
@@ -60,7 +34,6 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold text-sm">Product</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <a href="#features" className="text-foreground hover-elevate transition-colors">
@@ -73,40 +46,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                </a>
-              </li>
-              <li>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <ul className="space-y-3 text-sm">
-              <li>
-                </a>
-              </li>
-              <li>
-                </a>
-              </li>
-              <li>
-                </a>
-              </li>
-              <li>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <ul className="space-y-3 text-sm">
-              <li>
-                </a>
-              </li>
-              <li>
-                </a>
-              </li>
-              <li>
+                <a href="mailto:boundierofficial@gmail.com" className="text-foreground hover-elevate transition-colors">
+                  Email Us
                 </a>
               </li>
             </ul>
