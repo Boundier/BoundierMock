@@ -1,88 +1,42 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Shield, Eye, Brain } from "lucide-react";
+import React from "react";
+import { Shield, Eye, Brain } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-background" />
-      
-      <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center text-center">
-          <div className="max-w-5xl space-y-8">
-            <div className="space-y-6">
-              <h1 className="font-display text-6xl font-bold leading-tight tracking-tight sm:text-7xl lg:text-8xl" data-testid="text-hero-title">
-                You see it.{" "}
-                <span className="text-primary">
-                  We read it.
-                </span>
-              </h1>
-              <p className="mx-auto max-w-3xl text-xl text-foreground sm:text-2xl" data-testid="text-hero-subtitle">
-                Boundier detects the hidden subconscious influence behind content, empowering you to take back control of your attention.
-              </p>
-            </div>
+    <section id="hero" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <h1 className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl">
+              Boundier — Your Cognitive Firewall
+            </h1>
+            <p className="mt-6 text-lg text-foreground">
+              Detect the hidden subconscious influence behind content in real-time and take back control of your attention.
+            </p>
 
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button
-                size="lg"
-                variant="default"
-                className="gap-2 text-base px-8 py-6"
-                onClick={() => {
-                  document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                data-testid="button-see-demo"
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white shadow hover:brightness-95"
+                href="#demo"
               >
-                See Demo <Play className="h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="gap-2 text-base px-8 py-6"
-                onClick={() => {
-                  document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                data-testid="button-learn-more"
+                See Live Demo
+              </a>
+              <a
+                className="inline-flex items-center justify-center rounded-md border border-primary/20 bg-card px-6 py-3 text-sm font-medium text-foreground hover:shadow-sm"
+                href="#how-it-works"
               >
-                Learn More <ArrowRight className="h-5 w-5" />
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-3 gap-8 pt-12">
-              <div className="flex flex-col items-center gap-3">
-                <div className="rounded-full bg-primary/10 p-4 border border-primary/20">
-                  <Shield className="h-8 w-8 text-primary" />
-                </div>
-                <div className="font-display text-4xl font-bold text-primary" data-testid="text-stat-1">
-                  87%
-                </div>
-                <div className="text-sm text-foreground">
-                  Less manipulation
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <div className="rounded-full bg-primary/10 p-4 border border-primary/20">
-                  <Eye className="h-8 w-8 text-primary" />
-                </div>
-                <div className="font-display text-4xl font-bold text-primary" data-testid="text-stat-2">
-                  45min
-                </div>
-                <div className="text-sm text-foreground">
-                  Time saved daily
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-3">
-                <div className="rounded-full bg-primary/10 p-4 border border-primary/20">
-                  <Brain className="h-8 w-8 text-primary" />
-                </div>
-                <div className="font-display text-4xl font-bold text-primary" data-testid="text-stat-3">
-                  10k+
-                </div>
-                <div className="text-sm text-foreground">
-                  Protected users
-                </div>
-              </div>
+                Learn how it works
+              </a>
             </div>
           </div>
+
+          <div className="relative">
+            {/* Phone mockup / illustration would go here */}
+            <div className="h-[420px] w-full rounded-xl bg-gradient-to-br from-background to-card" />
+          </div>
         </div>
+
+        {/* Social proof / stats removed per request */}
       </div>
     </section>
   );
