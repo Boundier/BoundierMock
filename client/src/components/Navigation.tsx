@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
-import logoImage from "@assets/LogoForHeader_1761119497062.png";
+import logoImage from "@assets/LogoForHeader-removebg-preview_1761119896012.png";
 
 export default function Navigation() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/80 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <img 
               src={logoImage} 
               alt="Boundier" 
-              className="h-8" 
+              className="h-10" 
               data-testid="logo-image" 
             />
           </div>

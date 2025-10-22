@@ -1,12 +1,12 @@
 import { Twitter, Github, Linkedin } from "lucide-react";
 import { SiProducthunt } from "react-icons/si";
-import logoImage from "@assets/LogoForHeader_1761119497062.png";
+import logoImage from "@assets/LogoForHeader-removebg-preview_1761119896012.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-border bg-card/30">
+    <footer className="relative border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
@@ -14,7 +14,7 @@ export default function Footer() {
               <img 
                 src={logoImage} 
                 alt="Boundier" 
-                className="h-8" 
+                className="h-10" 
                 data-testid="logo-footer" 
               />
             </div>
