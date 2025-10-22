@@ -17,6 +17,24 @@ export default function Footer() {
                 data-testid="logo-footer" 
               />
             </div>
+          <div>
+            <h3 className="mb-4 font-semibold text-sm">Company</h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="mailto:boundierofficial@gmail.com" className="text-foreground hover-elevate transition-colors" data-testid="link-contact">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="mailto:boundierofficial@gmail.com" className="text-foreground hover-elevate transition-colors" data-testid="link-contact">
+                </a>
+              </li>
+            </ul>
+          </div>
             <p className="mt-4 text-sm text-foreground">
               You see it. We read it.
             </p>
@@ -47,60 +65,40 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  Pricing
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  FAQ
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold text-sm">Company</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  About
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  Blog
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  Careers
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  Contact
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold text-sm">Legal</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-foreground hover-elevate transition-colors">
-                  Cookie Policy
                 </a>
               </li>
             </ul>
