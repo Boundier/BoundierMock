@@ -9,7 +9,7 @@ export default function DashboardPreview() {
             Understand Your Influence Profile
           </h2>
           <p className="mt-4 text-lg text-foreground" data-testid="text-dashboard-subtitle">
-            See which subconscious triggers affect you and track your growing awareness
+            See the mock metrics below to understand how your awareness data will be displayed
           </p>
         </div>
 
