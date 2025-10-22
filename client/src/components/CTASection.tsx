@@ -10,30 +10,23 @@ import { useToast } from "@/hooks/use-toast";
 export default function CTASection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [serverMessage, setServerMessage] = useState<string | null>(null);
   const { toast } = useToast();
 
   const waitlistMutation = useMutation({
     mutationFn: async (email: string) => {
-      const res = await apiRequest("POST", "/api/waitlist", { email });
-      // forward server JSON
-      return await res.json();
+      return await apiRequest("POST", "/api/waitlist", { email });
     },
     onSuccess: () => {
       setSubmitted(true);
-      setServerMessage("Check your email for a confirmation link.");
       setTimeout(() => {
         setSubmitted(false);
         setEmail("");
-        setServerMessage(null);
-      }, 5000);
+      }, 3000);
     },
-    onError: async (error: any) => {
-      const msg = error.message || "Failed to join waitlist. Please try again.";
-      setServerMessage(msg);
+    onError: (error: any) => {
       toast({
         title: "Error",
-        description: msg,
+        description: error.message || "Failed to join waitlist. Please try again.",
         variant: "destructive",
       });
     },
@@ -41,7 +34,6 @@ export default function CTASection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setServerMessage(null);
     waitlistMutation.mutate(email);
   };
 
@@ -85,13 +77,7 @@ export default function CTASection() {
             ) : (
               <div className="mt-8 flex items-center justify-center gap-2 text-chart-2" data-testid="text-success-message">
                 <CheckCircle2 className="h-5 w-5" />
-                <span className="font-medium">Thanks! Check your email to confirm your signup.</span>
-              </div>
-            )}
-
-            {serverMessage && (
-              <div className="mt-4 text-sm text-muted-foreground">
-                {serverMessage}
+                <span className="font-medium">Thanks! We'll be in touch soon.</span>
               </div>
             )}
 
