@@ -35,6 +35,14 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          <div>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="mailto:boundierofficial@gmail.com" className="text-foreground hover-elevate transition-colors" data-testid="link-contact">
+                </a>
+              </li>
+            </ul>
+          </div>
             <p className="mt-4 text-sm text-foreground">
               You see it. We read it.
             </p>
