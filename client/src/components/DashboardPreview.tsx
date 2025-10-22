@@ -7,10 +7,10 @@ export default function DashboardPreview() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl" data-testid="text-dashboard-title">
-            Track Your Progress
+            Understand Your Influence Profile
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground" data-testid="text-dashboard-subtitle">
-            Gain insights into your digital habits with comprehensive analytics
+          <p className="mt-4 text-lg text-foreground" data-testid="text-dashboard-subtitle">
+            See which subconscious triggers affect you and track your growing awareness
           </p>
         </div>
 
@@ -28,23 +28,23 @@ export default function DashboardPreview() {
             <div className="mb-2 font-display text-3xl font-bold text-chart-2" data-testid="text-metric-1">
               2.4k
             </div>
-            <div className="text-sm text-muted-foreground">
-              Manipulative posts blocked this month
+            <div className="text-sm text-foreground">
+              Hidden influences revealed this month
             </div>
           </Card>
           <Card className="p-6 text-center">
             <div className="mb-2 font-display text-3xl font-bold text-chart-3" data-testid="text-metric-2">
               68%
             </div>
-            <div className="text-sm text-muted-foreground">
-              Reduction in impulsive scrolling
+            <div className="text-sm text-foreground">
+              Reduction in subconscious reactions
             </div>
           </Card>
           <Card className="p-6 text-center">
             <div className="mb-2 font-display text-3xl font-bold text-primary" data-testid="text-metric-3">
               3.2h
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-foreground">
               Average time saved per week
             </div>
           </Card>

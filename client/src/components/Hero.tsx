@@ -12,13 +12,13 @@ export default function Hero() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="font-display text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl" data-testid="text-hero-title">
-                Your Cognitive{" "}
+                You see it.{" "}
                 <span className="bg-gradient-to-r from-primary to-chart-4 bg-clip-text text-transparent">
-                  Firewall
+                  We read it.
                 </span>
               </h1>
-              <p className="text-lg text-muted-foreground sm:text-xl" data-testid="text-hero-subtitle">
-                Boundier is your cognitive firewall—detecting manipulative content in real-time and empowering you to take back control of your attention.
+              <p className="text-lg text-foreground sm:text-xl" data-testid="text-hero-subtitle">
+                Boundier detects the hidden subconscious influence behind content, empowering you to take back control of your attention.
               </p>
             </div>
 

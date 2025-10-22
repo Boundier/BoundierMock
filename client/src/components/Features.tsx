@@ -4,8 +4,8 @@ import { Card } from "@/components/ui/card";
 const features = [
   {
     icon: Shield,
-    title: "Real-Time Protection",
-    description: "Advanced AI continuously monitors content across all your apps, detecting manipulative patterns instantly.",
+    title: "Subconscious Analysis",
+    description: "Advanced AI detects hidden psychological influence patterns in content, revealing what targets your subconscious mind.",
   },
   {
     icon: Eye,
@@ -14,23 +14,23 @@ const features = [
   },
   {
     icon: Bell,
-    title: "Smart Notifications",
-    description: "Get timely, non-intrusive alerts that help you make conscious decisions without breaking your flow.",
+    title: "Smart Awareness Alerts",
+    description: "Get timely, non-intrusive notifications revealing the hidden influence tactics in content you're viewing.",
   },
   {
     icon: BarChart3,
-    title: "Analytics Dashboard",
-    description: "Track your digital wellbeing with detailed insights, weekly reports, and progress visualization.",
+    title: "Influence Analytics",
+    description: "Track which psychological triggers affect you most with detailed insights and pattern recognition.",
   },
   {
     icon: Settings,
     title: "Fully Customizable",
-    description: "Adjust sensitivity levels, choose which apps to monitor, and customize alert preferences to fit your needs.",
+    description: "Adjust sensitivity levels, choose which influence tactics to monitor, and customize alert preferences.",
   },
   {
     icon: Lock,
-    title: "No Blocking, Just Awareness",
-    description: "We don't block apps or content. Instead, we empower you with awareness to make better choices.",
+    title: "Awareness, Not Blocking",
+    description: "We don't block content. We reveal the hidden subconscious influence, empowering you to make conscious choices.",
   },
 ];
 
@@ -40,10 +40,10 @@ export default function Features() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center">
           <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl" data-testid="text-features-title">
-            Powerful Features for Your Digital Wellbeing
+            Powerful Features for Conscious Reading
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground" data-testid="text-features-subtitle">
-            Everything you need to reclaim control over your attention
+          <p className="mt-4 text-lg text-foreground" data-testid="text-features-subtitle">
+            Everything you need to see what's really influencing you
           </p>
         </div>
 

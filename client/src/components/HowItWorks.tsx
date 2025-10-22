@@ -5,20 +5,20 @@ const steps = [
   {
     number: "01",
     icon: Shield,
-    title: "Real-Time Detection",
-    description: "Boundier analyzes content as you scroll, identifying manipulative patterns, emotional triggers, and dark UX tactics.",
+    title: "Subconscious Analysis",
+    description: "Boundier analyzes the hidden psychological influence in content, detecting manipulation tactics that bypass conscious awareness.",
   },
   {
     number: "02",
     icon: Eye,
     title: "Instant Awareness",
-    description: "Get non-intrusive overlays when manipulative content is detected, helping you make conscious decisions about your attention.",
+    description: "Get non-intrusive alerts revealing the subconscious triggers embedded in content, helping you make conscious decisions.",
   },
   {
     number: "03",
     icon: TrendingUp,
     title: "Build Better Habits",
-    description: "Track your progress with detailed analytics and insights, learning what triggers you and building healthier digital habits.",
+    description: "Track your progress with detailed analytics showing which influence tactics affect you most, building immunity over time.",
   },
 ];
 
@@ -30,8 +30,8 @@ export default function HowItWorks() {
           <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl" data-testid="text-how-it-works-title">
             How It Works
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground" data-testid="text-how-it-works-subtitle">
-            Three simple steps to take back control of your digital wellbeing
+          <p className="mt-4 text-lg text-foreground" data-testid="text-how-it-works-subtitle">
+            Three simple steps to see the hidden influence behind what you read
           </p>
         </div>
 

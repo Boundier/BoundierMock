@@ -1,5 +1,5 @@
-import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/LogoForHeader_1761119497062.png";
 
 export default function Navigation() {
   return (
@@ -7,30 +7,32 @@ export default function Navigation() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Shield className="h-6 w-6 text-primary" data-testid="logo-icon" />
-            <span className="font-display text-xl font-bold" data-testid="logo-text">
-              Boundier
-            </span>
+            <img 
+              src={logoImage} 
+              alt="Boundier" 
+              className="h-8" 
+              data-testid="logo-image" 
+            />
           </div>
           
           <div className="hidden items-center gap-6 md:flex">
             <a 
               href="#how-it-works" 
-              className="text-sm font-medium text-muted-foreground hover-elevate transition-colors"
+              className="text-sm font-medium text-foreground hover-elevate transition-colors"
               data-testid="link-how-it-works"
             >
               How It Works
             </a>
             <a 
               href="#features" 
-              className="text-sm font-medium text-muted-foreground hover-elevate transition-colors"
+              className="text-sm font-medium text-foreground hover-elevate transition-colors"
               data-testid="link-features"
             >
               Features
             </a>
             <a 
               href="#demo" 
-              className="text-sm font-medium text-muted-foreground hover-elevate transition-colors"
+              className="text-sm font-medium text-foreground hover-elevate transition-colors"
               data-testid="link-demo"
             >
               Demo

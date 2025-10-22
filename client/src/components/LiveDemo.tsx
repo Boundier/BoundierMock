@@ -19,8 +19,8 @@ const contentExamples = [
     hasOverlay: true,
     overlayData: {
       level: "manipulative" as const,
-      title: "Manipulative Content Detected",
-      description: "This content uses emotional triggers, false urgency, and FOMO tactics designed to bypass your rational thinking.",
+      title: "Hidden Influence Detected",
+      description: "This content targets your subconscious with scarcity triggers, false urgency, and FOMO tactics designed to bypass rational decision-making.",
     },
   },
   {
@@ -30,8 +30,8 @@ const contentExamples = [
     hasOverlay: true,
     overlayData: {
       level: "caution" as const,
-      title: "Engagement Bait Detected",
-      description: "This content uses social pressure and bandwagon effect to encourage engagement.",
+      title: "Subconscious Influence Detected",
+      description: "This content uses social conformity pressure and fear of exclusion to trigger subconscious engagement responses.",
     },
   },
 ];
@@ -49,8 +49,8 @@ export default function LiveDemo() {
           <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl" data-testid="text-demo-title">
             See Boundier in Action
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground" data-testid="text-demo-subtitle">
-            Experience how Boundier detects and alerts you to manipulative content
+          <p className="mt-4 text-lg text-foreground" data-testid="text-demo-subtitle">
+            Experience how Boundier reveals the hidden subconscious influence in content
           </p>
         </div>
 

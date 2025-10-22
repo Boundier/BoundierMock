@@ -26,9 +26,9 @@ export default function CTASection() {
           
           <div className="relative text-center">
             <h2 className="font-display text-3xl font-bold sm:text-4xl lg:text-5xl" data-testid="text-cta-title">
-              Ready to Reclaim Your Attention?
+              See What You're Really Reading
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground" data-testid="text-cta-subtitle">
+            <p className="mt-4 text-lg text-foreground" data-testid="text-cta-subtitle">
               Join the waitlist to be notified when Boundier launches
             </p>
 

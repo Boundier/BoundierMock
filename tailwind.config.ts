@@ -83,10 +83,10 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Inter", "var(--font-sans)"],
+        sans: ["Cooper Hewitt", "var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
-        display: ["Space Grotesk", "Inter", "sans-serif"],
+        display: ["Cooper Hewitt", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

@@ -19,12 +19,12 @@ const levelConfig = {
   },
   caution: {
     color: "bg-chart-3 border-chart-3",
-    badge: "Caution",
+    badge: "Subconscious Influence Detected",
     badgeClass: "bg-chart-3/20 text-chart-3 border-chart-3/30",
   },
   manipulative: {
     color: "bg-destructive border-destructive",
-    badge: "Manipulative Content",
+    badge: "High Influence Detected",
     badgeClass: "bg-destructive/20 text-destructive border-destructive/30",
   },
 };
