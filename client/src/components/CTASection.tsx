@@ -3,19 +3,38 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Mail, CheckCircle2 } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 
 export default function CTASection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const { toast } = useToast();
+
+  const waitlistMutation = useMutation({
+    mutationFn: async (email: string) => {
+      return await apiRequest("POST", "/api/waitlist", { email });
+    },
+    onSuccess: () => {
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setEmail("");
+      }, 3000);
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to join waitlist. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email submitted:', email);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setEmail("");
-    }, 3000);
+    waitlistMutation.mutate(email);
   };
 
   return (
@@ -49,9 +68,10 @@ export default function CTASection() {
                 <Button 
                   type="submit" 
                   size="lg"
+                  disabled={waitlistMutation.isPending}
                   data-testid="button-join-waitlist"
                 >
-                  Join Waitlist
+                  {waitlistMutation.isPending ? "Joining..." : "Join Waitlist"}
                 </Button>
               </form>
             ) : (

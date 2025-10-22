@@ -4,12 +4,18 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Heart, MessageCircle, Share2, AlertTriangle, CheckCircle2, Info } from "lucide-react";
 import OverlayNotification from "./OverlayNotification";
+import avatar1 from "@assets/stock_images/professional_busines_103f900a.jpg";
+import avatar2 from "@assets/stock_images/professional_busines_33c7c8b4.jpg";
+import avatar3 from "@assets/stock_images/professional_busines_fa0e9841.jpg";
+import avatar4 from "@assets/stock_images/professional_busines_a7d8a242.jpg";
+import avatar5 from "@assets/stock_images/professional_busines_9e364d75.jpg";
 
 const contentExamples = [
   {
     type: "safe",
     content: "Check out this interesting article on sustainable living practices and how small changes can make a big environmental impact.",
     author: "Green Living Daily",
+    avatar: avatar1,
     time: "2 hours ago",
     hasOverlay: false,
     icon: CheckCircle2,
@@ -19,6 +25,7 @@ const contentExamples = [
     type: "manipulative",
     content: "URGENT: You're missing out! Only 2 spots left! Act NOW or regret forever! Limited time offer expires in 5 minutes! This deal will NEVER come back! ⚠️🔥",
     author: "QuickBuy Deals",
+    avatar: avatar2,
     time: "15 minutes ago",
     hasOverlay: true,
     icon: AlertTriangle,
@@ -33,6 +40,7 @@ const contentExamples = [
     type: "caution",
     content: "Everyone is talking about this! Don't be the only one who doesn't know! 🔥 Join thousands who already discovered this life-changing secret!",
     author: "Viral Trends",
+    avatar: avatar3,
     time: "1 hour ago",
     hasOverlay: true,
     icon: Info,
@@ -47,6 +55,7 @@ const contentExamples = [
     type: "safe",
     content: "New study finds that spending 30 minutes outdoors daily can improve mental health and reduce stress levels. Read the full research here.",
     author: "Science Today",
+    avatar: avatar4,
     time: "3 hours ago",
     hasOverlay: false,
     icon: CheckCircle2,
@@ -56,6 +65,7 @@ const contentExamples = [
     type: "manipulative",
     content: "Your friends are getting ahead while you're stuck! Click here before it's too late! You'll kick yourself if you miss this! Last chance! 💰",
     author: "Success Shortcuts",
+    avatar: avatar5,
     time: "30 minutes ago",
     hasOverlay: true,
     icon: AlertTriangle,
@@ -139,7 +149,11 @@ export default function LiveDemo() {
                 }}>
                   <div className="mb-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-primary/10 border border-primary/20" />
+                      <img 
+                        src={example.avatar} 
+                        alt={example.author}
+                        className="h-10 w-10 rounded-full object-cover border border-primary/20"
+                      />
                       <div>
                         <div className="font-semibold text-sm">{example.author}</div>
                         <div className="text-xs text-foreground/70">{example.time}</div>

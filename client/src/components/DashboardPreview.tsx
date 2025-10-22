@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-import dashboardImage from "@assets/generated_images/Dashboard_analytics_interface_preview_552fcef0.png";
 
 export default function DashboardPreview() {
   return (
@@ -13,15 +12,6 @@ export default function DashboardPreview() {
             See which subconscious triggers affect you and track your growing awareness
           </p>
         </div>
-
-        <Card className="overflow-hidden p-2">
-          <img
-            src={dashboardImage}
-            alt="Boundier analytics dashboard showing content safety metrics and usage patterns"
-            className="w-full rounded-md"
-            data-testid="img-dashboard-preview"
-          />
-        </Card>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           <Card className="p-6 text-center">

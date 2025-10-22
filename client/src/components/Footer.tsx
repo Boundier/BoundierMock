@@ -1,5 +1,4 @@
-import { Twitter, Github, Linkedin } from "lucide-react";
-import { SiProducthunt } from "react-icons/si";
+import { SiYoutube } from "react-icons/si";
 import logoImage from "@assets/LogoForHeader-removebg-preview_1761119896012.png";
 
 export default function Footer() {
@@ -23,32 +22,13 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-4">
               <a 
-                href="#" 
+                href="https://youtube.com/@boundier" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-foreground hover-elevate active-elevate-2 transition-colors"
-                data-testid="link-twitter"
+                data-testid="link-youtube"
               >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="text-foreground hover-elevate active-elevate-2 transition-colors"
-                data-testid="link-github"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="text-foreground hover-elevate active-elevate-2 transition-colors"
-                data-testid="link-linkedin"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="text-foreground hover-elevate active-elevate-2 transition-colors"
-                data-testid="link-producthunt"
-              >
-                <SiProducthunt className="h-5 w-5" />
+                <SiYoutube className="h-5 w-5" />
               </a>
             </div>
           </div>
