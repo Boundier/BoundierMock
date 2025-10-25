@@ -64,8 +64,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.status(201).json({ id: entry.id, email: entry.email, createdAt: entry.createdAt });
     } catch (error) {
-      res.status(400).json({ error: "Invalid email format" });
+  console.error("ACTUAL ERROR:", error);
+  console.error("ERROR MESSAGE:", error?.message);
+  console.error("ERROR STACK:", error?.stack);
+  console.log("REQUEST BODY:", req.body);
+  res.status(400).json({ error: "Invalid email format" });
     }
+
   });
 
   app.get("/api/waitlist/confirm", async (req, res) => {
