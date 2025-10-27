@@ -11,7 +11,7 @@ import avatar3 from "@assets/stock_images/professional_busines_fa0e9841.jpg";
 import avatar4 from "@assets/stock_images/professional_busines_a7d8a242.jpg";
 import avatar5 from "@assets/stock_images/professional_busines_9e364d75.jpg";
 
-// Only 5 posts, all overlays have confident "why"
+// 5 posts only, all overlays consistent, "why"-explanations
 const contentExamples = [
   {
     type: "subtle",
@@ -25,7 +25,7 @@ const contentExamples = [
     overlayData: {
       level: "subtle",
       title: "Subconscious Influence Detected",
-      description: "This post uses positive framing to directly increase your motivation for outdoor activity—weather updates don’t just inform, they guide mood and planning decisions.",
+      description: "This message uses positive framing to directly increase your motivation for outdoor activity—weather updates don’t just inform, they guide mood and planning decisions.",
     },
   },
   {
@@ -40,7 +40,7 @@ const contentExamples = [
     overlayData: {
       level: "subtle",
       title: "Subconscious Influence Detected",
-      description: "Subtle urgency cues make you feel responsible and prompt action sooner. Administrative reminders intentionally nudge compliance and punctuality.",
+      description: "Urgency cues are present to prompt responsible, timely action—administrative reminders intentionally nudge compliance and punctuality.",
     },
   },
   {
@@ -55,7 +55,7 @@ const contentExamples = [
     overlayData: {
       level: "manipulative",
       title: "Hidden Influence Detected",
-      description: "Scarcity and loss aversion override your critical thinking. This copy is designed to trigger stress and impulsivity, resulting in rushed decisions.",
+      description: "Scarcity and loss aversion are used to override your critical thinking and trigger stress-driven actions. This content is designed to elicit impulsivity.",
     },
   },
   {
@@ -70,7 +70,7 @@ const contentExamples = [
     overlayData: {
       level: "caution",
       title: "Subconscious Influence Detected",
-      description: "Social proof and fear of missing out are used to make you conform. This message leverages your instinct to follow the crowd and avoid exclusion.",
+      description: "Social proof and fear of missing out compel you to conform. This pattern targets your instinct to follow the crowd and avoid exclusion.",
     },
   },
   {
@@ -85,88 +85,124 @@ const contentExamples = [
     overlayData: {
       level: "subtle",
       title: "Subconscious Influence Detected",
-      description: "The phrase 'experts agree' exploits authority bias, directly encouraging compliance and trust, regardless of your own research.",
+      description: "Using 'experts agree' leverages authority bias—a proven method for eliciting compliance and trust, regardless of your own evaluation.",
     },
   },
 ];
 
-const userStats = [
-  { label: "Influences revealed", value: 5 },
+const analyticsStats = [
+  { label: "Subtle influences revealed", value: 5 },
   { label: "Manipulative triggers avoided", value: 1 },
   { label: "Mindful interaction streak", value: "7 days" },
 ];
-const rewardBadge = {
-  name: "Mindful Surfer",
-  icon: Star,
-  description: "For maintaining a 7-day streak of conscious browsing with overlays ON.",
-};
+const rewardsList = [
+  {
+    name: "Mindful Surfer",
+    icon: Star,
+    description: "Awarded for a 7-day streak of conscious browsing with overlays ON.",
+  },
+  {
+    name: "Trigger Spotter",
+    icon: Eye,
+    description: "Identified 10 unique subconscious influence patterns.",
+  },
+  {
+    name: "Critical Thinker",
+    icon: Info,
+    description: "Paused and read explainability cards on every overlay this week.",
+  },
+];
 
 export default function LiveDemo() {
   const [showOverlayDetails, setShowOverlayDetails] = useState(false);
   const [overlayDetails, setOverlayDetails] = useState<any>(null);
   const [detailPosition, setDetailPosition] = useState<{top: number; left: number}|null>(null);
-  const [dashboardMode, setDashboardMode] = useState(false);
+  const [dashboardMode, setDashboardMode] = useState<"analytics"|"rewards"|null>(null);
   const [overlaysOn, setOverlaysOn] = useState(true);
 
-  const toggleOverlays = () => setOverlaysOn(!overlaysOn);
-
-  // Subtle explainability card, positioned by click
+  // Animation + position explainability card near overlay
   const handleCardClick = (index: number, event: React.MouseEvent) => {
     if (contentExamples[index].hasOverlay && overlaysOn) {
       setOverlayDetails(contentExamples[index].overlayData);
-      // Position card near click (for subtlety)
       const rect = (event.target as HTMLElement).getBoundingClientRect();
-      setDetailPosition({ top: rect.bottom + window.scrollY + 8, left: rect.left + window.scrollX });
+      setDetailPosition({
+        top: rect.bottom + window.scrollY + 8,
+        left: rect.left + window.scrollX,
+      });
       setShowOverlayDetails(true);
     }
   };
 
-  const goToDashboard = () => setDashboardMode(true);
+  // Hover animation for cards
+  const cardClass = "p-4 flex gap-3 items-start relative shadow transition-all duration-150 hover:scale-105 hover:shadow-lg hover:bg-gray-50";
 
-  if (dashboardMode) {
+  // Rewards and Analytics use matching style
+  const dashboardCardClass = "rounded shadow bg-white border p-4 transition-all duration-150 hover:scale-105 hover:shadow-lg hover:bg-gray-50 flex items-center gap-2 mb-3";
+
+  const toggleOverlays = () => setOverlaysOn(!overlaysOn);
+
+  // Boundier Analytics Dashboard
+  if (dashboardMode === "analytics") {
     return (
       <div className="mx-auto max-w-2xl py-8 animate-fadein">
-        <h2 className="text-3xl font-bold mb-4 text-center">Your Boundier Reward Dashboard</h2>
+        <h2 className="text-3xl font-bold mb-4 text-center">Boundier Analytics</h2>
         <div className="mb-4 flex justify-center">
-          <Button variant="secondary" onClick={() => setDashboardMode(false)}>Back to Demo</Button>
+          <Button variant="secondary" onClick={() => setDashboardMode(null)}>Back to Demo</Button>
         </div>
-        <div className="grid gap-6">
-          <div className="flex flex-wrap gap-4 justify-center mb-2">
-            {userStats.map((stat, idx) => (
-              <div key={idx} className="px-4 py-1 rounded bg-white shadow border font-medium text-lg">
-                {stat.label}: <span className="font-bold text-chart-2">{stat.value}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-2 flex flex-col items-center">
-            <rewardBadge.icon className="w-10 h-10 text-chart-1 mb-2" />
-            <span className="font-bold text-xl">{rewardBadge.name}</span>
-            <span className="text-chart-3 text-base">{rewardBadge.description}</span>
-          </div>
-          <div className="mt-6 p-4 bg-chart-3/10 rounded">
-            <p className="text-chart-3 text-center">
-              Tip: The more you use overlays and reflect on explainability cards, the more you unlock mindful streaks and community rewards!
-            </p>
-          </div>
+        <div className="grid gap-4">
+          {analyticsStats.map((stat, idx) => (
+            <div key={idx} className={dashboardCardClass}>
+              <span className="font-medium text-lg">{stat.label}:</span>
+              <span className="font-bold text-chart-2">{stat.value}</span>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
+  // Boundier Rewards Dashboard (matches analytics style/features)
+  if (dashboardMode === "rewards") {
+    return (
+      <div className="mx-auto max-w-2xl py-8 animate-fadein">
+        <h2 className="text-3xl font-bold mb-4 text-center">Boundier Rewards</h2>
+        <div className="mb-4 flex justify-center">
+          <Button variant="secondary" onClick={() => setDashboardMode(null)}>Back to Demo</Button>
+        </div>
+        <div className="grid gap-4">
+          {rewardsList.map((reward, i) => (
+            <div key={i} className={dashboardCardClass}>
+              <reward.icon className="w-7 h-7 text-chart-1 mr-3" />
+              <span className="font-bold">{reward.name}</span>
+              <span className="text-chart-3">{reward.description}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 text-center text-sm text-chart-3">
+          Tip: More explainability and pattern recognition unlocks new rewards!
+        </div>
+      </div>
+    );
+  }
+
+  // MAIN DEMO FEED
   return (
     <div className="mx-auto max-w-2xl py-8">
       <h2 className="text-3xl font-bold mb-4 text-center">Live Cognitive Firewall Demo</h2>
-      <div className="mb-6 flex justify-center">
+      <div className="mb-6 flex justify-center gap-2">
         <Button variant="outline" onClick={toggleOverlays}>
           {overlaysOn ? "Hide Overlays" : "Show Overlays"}
         </Button>
-        <Button variant="default" className="ml-3" onClick={goToDashboard}>
-          View My Stats & Rewards
+        <Button variant="default" onClick={() => setDashboardMode("analytics")}>
+          View Boundier Analytics
+        </Button>
+        <Button variant="default" onClick={() => setDashboardMode("rewards")}>
+          View Boundier Rewards
         </Button>
       </div>
       <div className="space-y-6">
         {contentExamples.map((ex, i) => (
-          <Card key={i} className="p-4 flex gap-3 items-start relative shadow">
+          <Card key={i} className={cardClass}>
             <img src={ex.avatar} alt="author" className="w-12 h-12 rounded-full mt-1" />
             <div className="flex-1">
               <div className="flex items-center mb-1 gap-2">
@@ -183,17 +219,12 @@ export default function LiveDemo() {
                 {ex.hasOverlay && overlaysOn && (
                   <Badge
                     color={ex.iconColor}
-                    variant={
-                      ex.type === "manipulative" ? "destructive"
-                      : ex.type === "subtle" ? "default"
-                      : ex.type === "caution" ? "outline"
-                      : "secondary"
-                    }
-                    className="cursor-pointer"
+                    variant="default"
+                    className="cursor-pointer px-2 py-1 rounded transition hover:bg-chart-1/20"
                     onClick={e => handleCardClick(i, e)}
                   >
-                    <ex.icon className="inline w-4 h-4 mr-2" />
-                    {ex.overlayData?.title || "Explain"}
+                    <Eye className="inline w-4 h-4 mr-2" />
+                    {ex.overlayData?.title}
                   </Badge>
                 )}
               </div>
@@ -201,7 +232,7 @@ export default function LiveDemo() {
           </Card>
         ))}
       </div>
-      {/* Subtle explainability card as floating card */}
+      {/* Subtle, animated explainability card near overlay */}
       {showOverlayDetails && overlayDetails && detailPosition && (
         <div
           className="fixed z-50 rounded shadow-xl bg-white border p-4 animate-fadein transition-all"
@@ -211,6 +242,7 @@ export default function LiveDemo() {
             minWidth: 260,
             maxWidth: 340,
             boxShadow: "0 2px 16px 0 rgba(0,0,0,0.15)",
+            pointerEvents: "auto"
           }}
         >
           <div className="flex items-center justify-between mb-1">
