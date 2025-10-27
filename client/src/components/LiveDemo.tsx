@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Heart, MessageCircle, Share2, AlertTriangle, CheckCircle2, Info, Star, Eye } from "lucide-react";
-import OverlayNotification from "./OverlayNotification";
+import { Heart, MessageCircle, Share2, AlertTriangle, CheckCircle2, Info, Star, Eye, X } from "lucide-react";
 
 // Use only existing avatars
 import avatar1 from "@assets/stock_images/professional_busines_103f900a.jpg";
@@ -12,7 +11,7 @@ import avatar3 from "@assets/stock_images/professional_busines_fa0e9841.jpg";
 import avatar4 from "@assets/stock_images/professional_busines_a7d8a242.jpg";
 import avatar5 from "@assets/stock_images/professional_busines_9e364d75.jpg";
 
-// *** Only 5 posts ***
+// Only 5 posts, all overlays have confident "why"
 const contentExamples = [
   {
     type: "subtle",
@@ -26,12 +25,12 @@ const contentExamples = [
     overlayData: {
       level: "subtle",
       title: "Subconscious Influence Detected",
-      description: "Positive framing encourages outdoor activity. Even simple info subtly shapes your behavior and mood.",
+      description: "This post uses positive framing to directly increase your motivation for outdoor activity—weather updates don’t just inform, they guide mood and planning decisions.",
     },
   },
   {
     type: "subtle",
-    content: "Reminder: The library will be closed Friday for maintenance. Please return books to avoid inconvenience.",
+    content: "Reminder: The library will be closed Friday for maintenance. Please return books on time to avoid inconvenience.",
     author: "City Library",
     avatar: avatar3,
     time: "4 hours ago",
@@ -41,7 +40,7 @@ const contentExamples = [
     overlayData: {
       level: "subtle",
       title: "Subconscious Influence Detected",
-      description: "Gentle urgency and appeal to order. Routine notices can nudge you to act sooner than planned.",
+      description: "Subtle urgency cues make you feel responsible and prompt action sooner. Administrative reminders intentionally nudge compliance and punctuality.",
     },
   },
   {
@@ -56,7 +55,7 @@ const contentExamples = [
     overlayData: {
       level: "manipulative",
       title: "Hidden Influence Detected",
-      description: "Scarcity triggers, urgency, and FOMO are being used to rush your decision-making. Consider if you really want this, or just feel pressured.",
+      description: "Scarcity and loss aversion override your critical thinking. This copy is designed to trigger stress and impulsivity, resulting in rushed decisions.",
     },
   },
   {
@@ -71,7 +70,7 @@ const contentExamples = [
     overlayData: {
       level: "caution",
       title: "Subconscious Influence Detected",
-      description: "Social conformity pressure and fear of exclusion are present. Pause and reflect before engaging.",
+      description: "Social proof and fear of missing out are used to make you conform. This message leverages your instinct to follow the crowd and avoid exclusion.",
     },
   },
   {
@@ -86,13 +85,13 @@ const contentExamples = [
     overlayData: {
       level: "subtle",
       title: "Subconscious Influence Detected",
-      description: "Appeal to authority and future bias gently shape your judgment while feeling neutral.",
+      description: "The phrase 'experts agree' exploits authority bias, directly encouraging compliance and trust, regardless of your own research.",
     },
   },
 ];
 
 const userStats = [
-  { label: "Subtle influences revealed", value: 5 },
+  { label: "Influences revealed", value: 5 },
   { label: "Manipulative triggers avoided", value: 1 },
   { label: "Mindful interaction streak", value: "7 days" },
 ];
@@ -105,14 +104,19 @@ const rewardBadge = {
 export default function LiveDemo() {
   const [showOverlayDetails, setShowOverlayDetails] = useState(false);
   const [overlayDetails, setOverlayDetails] = useState<any>(null);
+  const [detailPosition, setDetailPosition] = useState<{top: number; left: number}|null>(null);
   const [dashboardMode, setDashboardMode] = useState(false);
   const [overlaysOn, setOverlaysOn] = useState(true);
 
   const toggleOverlays = () => setOverlaysOn(!overlaysOn);
 
-  const handleCardClick = (index: number) => {
+  // Subtle explainability card, positioned by click
+  const handleCardClick = (index: number, event: React.MouseEvent) => {
     if (contentExamples[index].hasOverlay && overlaysOn) {
       setOverlayDetails(contentExamples[index].overlayData);
+      // Position card near click (for subtlety)
+      const rect = (event.target as HTMLElement).getBoundingClientRect();
+      setDetailPosition({ top: rect.bottom + window.scrollY + 8, left: rect.left + window.scrollX });
       setShowOverlayDetails(true);
     }
   };
@@ -179,9 +183,14 @@ export default function LiveDemo() {
                 {ex.hasOverlay && overlaysOn && (
                   <Badge
                     color={ex.iconColor}
-                    variant={ex.type === "manipulative" ? "destructive" : ex.type === "subtle" ? "default" : ex.type === "caution" ? "outline" : "secondary"}
+                    variant={
+                      ex.type === "manipulative" ? "destructive"
+                      : ex.type === "subtle" ? "default"
+                      : ex.type === "caution" ? "outline"
+                      : "secondary"
+                    }
                     className="cursor-pointer"
-                    onClick={() => handleCardClick(i)}
+                    onClick={e => handleCardClick(i, e)}
                   >
                     <ex.icon className="inline w-4 h-4 mr-2" />
                     {ex.overlayData?.title || "Explain"}
@@ -192,13 +201,26 @@ export default function LiveDemo() {
           </Card>
         ))}
       </div>
-      {showOverlayDetails && overlayDetails && (
-        <OverlayNotification
-          title={overlayDetails.title}
-          description={overlayDetails.description}
-          level={overlayDetails.level}
-          onClose={() => setShowOverlayDetails(false)}
-        />
+      {/* Subtle explainability card as floating card */}
+      {showOverlayDetails && overlayDetails && detailPosition && (
+        <div
+          className="fixed z-50 rounded shadow-xl bg-white border p-4 animate-fadein transition-all"
+          style={{
+            top: detailPosition.top,
+            left: detailPosition.left,
+            minWidth: 260,
+            maxWidth: 340,
+            boxShadow: "0 2px 16px 0 rgba(0,0,0,0.15)",
+          }}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="font-bold text-base">{overlayDetails.title}</span>
+            <button onClick={() => setShowOverlayDetails(false)} className="ml-2 rounded p-1 hover:bg-chart-3/10">
+              <X className="w-4 h-4 text-chart-3" />
+            </button>
+          </div>
+          <div className="text-chart-4 text-sm leading-relaxed">{overlayDetails.description}</div>
+        </div>
       )}
     </div>
   );
