@@ -12,21 +12,41 @@ import avatar3 from "@assets/stock_images/professional_busines_fa0e9841.jpg";
 import avatar4 from "@assets/stock_images/professional_busines_a7d8a242.jpg";
 import avatar5 from "@assets/stock_images/professional_busines_9e364d75.jpg";
 
-// Updated content examples array (subtle post uses avatar1)
+// *** Only 5 posts ***
 const contentExamples = [
   {
-    type: "safe",
-    content: "Check out this interesting article on sustainable living practices and how small changes can make a big environmental impact.",
-    author: "Green Living Daily",
-    avatar: avatar1,
-    time: "2 hours ago",
-    hasOverlay: false,
-    icon: CheckCircle2,
-    iconColor: "text-chart-2",
+    type: "subtle",
+    content: "Here's yesterday's weather update: Mostly sunny, gentle breeze. Don't miss a beautiful day outdoors!",
+    author: "Weather Now",
+    avatar: avatar4,
+    time: "6 hours ago",
+    hasOverlay: true,
+    icon: Eye,
+    iconColor: "text-chart-4",
+    overlayData: {
+      level: "subtle",
+      title: "Subconscious Influence Detected",
+      description: "Positive framing encourages outdoor activity. Even simple info subtly shapes your behavior and mood.",
+    },
+  },
+  {
+    type: "subtle",
+    content: "Reminder: The library will be closed Friday for maintenance. Please return books to avoid inconvenience.",
+    author: "City Library",
+    avatar: avatar3,
+    time: "4 hours ago",
+    hasOverlay: true,
+    icon: Eye,
+    iconColor: "text-chart-4",
+    overlayData: {
+      level: "subtle",
+      title: "Subconscious Influence Detected",
+      description: "Gentle urgency and appeal to order. Routine notices can nudge you to act sooner than planned.",
+    },
   },
   {
     type: "manipulative",
-    content: "URGENT: You're missing out! Only 2 spots left! Act NOW or regret forever! Limited time offer expires in 5 minutes! This deal will NEVER come back! ⚠️🔥",
+    content: "URGENT: Only 2 spots left! Act NOW or regret forever! This deal will NEVER come back! ⚠️🔥",
     author: "QuickBuy Deals",
     avatar: avatar2,
     time: "15 minutes ago",
@@ -36,12 +56,12 @@ const contentExamples = [
     overlayData: {
       level: "manipulative",
       title: "Hidden Influence Detected",
-      description: "This content targets your subconscious with scarcity triggers, false urgency, and FOMO tactics designed to bypass rational decision-making.",
+      description: "Scarcity triggers, urgency, and FOMO are being used to rush your decision-making. Consider if you really want this, or just feel pressured.",
     },
   },
   {
     type: "caution",
-    content: "Everyone is talking about this! Don't be the only one who doesn't know! 🔥 Join thousands who already discovered this life-changing secret!",
+    content: "Everyone is talking about this! Don't be the only one who doesn't know! 🔥 Join thousands who already discovered this secret!",
     author: "Viral Trends",
     avatar: avatar3,
     time: "1 hour ago",
@@ -51,39 +71,13 @@ const contentExamples = [
     overlayData: {
       level: "caution",
       title: "Subconscious Influence Detected",
-      description: "This content uses social conformity pressure and fear of exclusion to trigger subconscious engagement responses.",
-    },
-  },
-  {
-    type: "safe",
-    content: "New study finds that spending 30 minutes outdoors daily can improve mental health and reduce stress levels. Read the full research here.",
-    author: "Science Today",
-    avatar: avatar4,
-    time: "3 hours ago",
-    hasOverlay: false,
-    icon: CheckCircle2,
-    iconColor: "text-chart-2",
-  },
-  {
-    type: "manipulative",
-    content: "Your friends are getting ahead while you're stuck! Click here before it's too late! You'll kick yourself if you miss this! Last chance! 💰",
-    author: "Success Shortcuts",
-    avatar: avatar5,
-    time: "30 minutes ago",
-    hasOverlay: true,
-    icon: AlertTriangle,
-    iconColor: "text-destructive",
-    overlayData: {
-      level: "manipulative",
-      title: "High Influence Detected",
-      description: "Multiple psychological triggers detected: social comparison, loss aversion, time pressure, and emotional manipulation designed to force immediate action.",
+      description: "Social conformity pressure and fear of exclusion are present. Pause and reflect before engaging.",
     },
   },
   {
     type: "subtle",
-    // Uses existing avatar to avoid missing asset
     avatar: avatar1,
-    content: "Leading experts agree you should always invest in your future. Check out our recommended plans.",
+    content: "Leading experts agree you should always invest in your future. See our plans.",
     author: "Financial Insights",
     time: "10 minutes ago",
     hasOverlay: true,
@@ -91,28 +85,27 @@ const contentExamples = [
     iconColor: "text-chart-4",
     overlayData: {
       level: "subtle",
-      title: "Low-Level Influence Detected",
-      description: "This content uses appeals to authority ('experts agree') and future bias to nudge decisions gently, affecting your judgment while feeling neutral.",
+      title: "Subconscious Influence Detected",
+      description: "Appeal to authority and future bias gently shape your judgment while feeling neutral.",
     },
   },
 ];
 
 const userStats = [
-  { label: "FOMO triggers avoided", value: 4 },
-  { label: "Conscious scroll sessions", value: 7 },
-  { label: "Mindful interaction streak", value: "5 days" },
+  { label: "Subtle influences revealed", value: 5 },
+  { label: "Manipulative triggers avoided", value: 1 },
+  { label: "Mindful interaction streak", value: "7 days" },
 ];
 const rewardBadge = {
   name: "Mindful Surfer",
   icon: Star,
-  description: "Awarded for maintaining a 5-day streak of conscious browsing.",
+  description: "For maintaining a 7-day streak of conscious browsing with overlays ON.",
 };
 
 export default function LiveDemo() {
-  const [activeOverlay, setActiveOverlay] = useState<number | null>(null);
   const [showOverlayDetails, setShowOverlayDetails] = useState(false);
   const [overlayDetails, setOverlayDetails] = useState<any>(null);
-  const [showBadges, setShowBadges] = useState(false);
+  const [dashboardMode, setDashboardMode] = useState(false);
   const [overlaysOn, setOverlaysOn] = useState(true);
 
   const toggleOverlays = () => setOverlaysOn(!overlaysOn);
@@ -124,7 +117,37 @@ export default function LiveDemo() {
     }
   };
 
-  const revealBadges = () => setShowBadges(true);
+  const goToDashboard = () => setDashboardMode(true);
+
+  if (dashboardMode) {
+    return (
+      <div className="mx-auto max-w-2xl py-8 animate-fadein">
+        <h2 className="text-3xl font-bold mb-4 text-center">Your Boundier Reward Dashboard</h2>
+        <div className="mb-4 flex justify-center">
+          <Button variant="secondary" onClick={() => setDashboardMode(false)}>Back to Demo</Button>
+        </div>
+        <div className="grid gap-6">
+          <div className="flex flex-wrap gap-4 justify-center mb-2">
+            {userStats.map((stat, idx) => (
+              <div key={idx} className="px-4 py-1 rounded bg-white shadow border font-medium text-lg">
+                {stat.label}: <span className="font-bold text-chart-2">{stat.value}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 flex flex-col items-center">
+            <rewardBadge.icon className="w-10 h-10 text-chart-1 mb-2" />
+            <span className="font-bold text-xl">{rewardBadge.name}</span>
+            <span className="text-chart-3 text-base">{rewardBadge.description}</span>
+          </div>
+          <div className="mt-6 p-4 bg-chart-3/10 rounded">
+            <p className="text-chart-3 text-center">
+              Tip: The more you use overlays and reflect on explainability cards, the more you unlock mindful streaks and community rewards!
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-2xl py-8">
@@ -133,7 +156,7 @@ export default function LiveDemo() {
         <Button variant="outline" onClick={toggleOverlays}>
           {overlaysOn ? "Hide Overlays" : "Show Overlays"}
         </Button>
-        <Button variant="default" className="ml-3" onClick={revealBadges}>
+        <Button variant="default" className="ml-3" onClick={goToDashboard}>
           View My Stats & Rewards
         </Button>
       </div>
@@ -153,26 +176,15 @@ export default function LiveDemo() {
                 <Heart className="w-4 h-4" />
                 <MessageCircle className="w-4 h-4" />
                 <Share2 className="w-4 h-4" />
-                {ex.hasOverlay && overlaysOn ? (
+                {ex.hasOverlay && overlaysOn && (
                   <Badge
                     color={ex.iconColor}
-                    variant={
-                      ex.type === "manipulative"
-                        ? "destructive"
-                        : ex.type === "subtle"
-                        ? "default"
-                        : "outline"
-                    }
+                    variant={ex.type === "manipulative" ? "destructive" : ex.type === "subtle" ? "default" : ex.type === "caution" ? "outline" : "secondary"}
                     className="cursor-pointer"
                     onClick={() => handleCardClick(i)}
                   >
                     <ex.icon className="inline w-4 h-4 mr-2" />
-                    {ex.overlayData?.title}
-                  </Badge>
-                ) : null}
-                {ex.type === "safe" && (
-                  <Badge color={ex.iconColor} variant="secondary">
-                    <CheckCircle2 className="inline w-4 h-4 mr-2" /> No Influence Detected
+                    {ex.overlayData?.title || "Explain"}
                   </Badge>
                 )}
               </div>
@@ -180,7 +192,6 @@ export default function LiveDemo() {
           </Card>
         ))}
       </div>
-
       {showOverlayDetails && overlayDetails && (
         <OverlayNotification
           title={overlayDetails.title}
@@ -188,24 +199,6 @@ export default function LiveDemo() {
           level={overlayDetails.level}
           onClose={() => setShowOverlayDetails(false)}
         />
-      )}
-
-      {showBadges && (
-        <div className="mt-10 p-6 rounded bg-chart-1/5 border flex flex-col items-center text-center animate-fadein">
-          <h3 className="text-xl font-bold mb-2">Your Impact This Week</h3>
-          <div className="flex flex-wrap gap-4 justify-center mb-4">
-            {userStats.map((stat, idx) => (
-              <div key={idx} className="px-4 py-1 rounded bg-white shadow border font-medium text-lg">
-                {stat.label}: <span className="font-bold text-chart-2">{stat.value}</span>
-              </div>
-            ))}
-          </div>
-          <div className="mt-2 flex flex-col items-center">
-            <rewardBadge.icon className="w-8 h-8 text-chart-1 mb-2" />
-            <span className="font-bold">{rewardBadge.name}</span>
-            <span className="text-chart-3 text-sm">{rewardBadge.description}</span>
-          </div>
-        </div>
       )}
     </div>
   );
